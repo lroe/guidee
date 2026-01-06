@@ -1,0 +1,160 @@
+<!DOCTYPE html>
+<html lang="en">
+
+<head>
+    <meta charset="UTF-8">
+    <meta name="viewport" content="width=device-width, initial-scale=1.0">
+    <title>Guidee AI Labs | Business Card</title>
+    <link rel="preconnect" href="https://fonts.googleapis.com">
+    <link rel="preconnect" href="https://fonts.gstatic.com" crossorigin>
+    <link href="https://fonts.googleapis.com/css2?family=Inter:wght@300;400;500;600;700&display=swap" rel="stylesheet">
+    <style>
+        :root {
+            --bg-primary: #000000;
+            --text-primary: #ffffff;
+            --text-secondary: rgba(255, 255, 255, 0.6);
+            --accent: #ffffff;
+        }
+
+        @page {
+            size: 3.5in 2in;
+            margin: 0;
+        }
+
+        * {
+            box-sizing: border-box;
+            margin: 0;
+            padding: 0;
+        }
+
+        body {
+            background-color: var(--bg-primary);
+            color: var(--text-primary);
+            font-family: 'Inter', sans-serif;
+            width: 3.5in;
+            height: 2in;
+            display: flex;
+            align-items: center;
+            justify-content: center;
+            overflow: hidden;
+            -webkit-print-color-adjust: exact;
+            print-color-adjust: exact;
+        }
+
+        .card {
+            width: 100%;
+            height: 100%;
+            padding: 0.25in;
+            display: flex;
+            flex-direction: column;
+            justify-content: center;
+            position: relative;
+            background: #000;
+        }
+
+        .header {
+            display: flex;
+            align-items: center;
+            margin-bottom: 0.1in;
+        }
+
+        .logo {
+            width: 48px;
+            height: 48px;
+            filter: drop-shadow(0 0 12px rgba(255, 255, 255, 0.5));
+            margin-right: 12px;
+        }
+
+        h1 {
+            font-size: 1.25rem;
+            font-weight: 700;
+            letter-spacing: -0.05em;
+            margin: 0;
+        }
+
+        .tagline {
+            font-size: 0.75rem;
+            color: var(--text-secondary);
+            letter-spacing: 0.05em;
+            text-transform: uppercase;
+            margin-bottom: 0.2in;
+            font-weight: 500;
+        }
+
+        .contacts {
+            display: flex;
+            flex-direction: column;
+            gap: 4px;
+        }
+
+        .contact-item {
+            font-size: 0.65rem;
+            font-weight: 500;
+            display: flex;
+            flex-direction: column;
+            border-left: 1px solid rgba(255, 255, 255, 0.2);
+            padding-left: 8px;
+            margin-bottom: 4px;
+        }
+
+        .contact-item span:last-child {
+            font-size: 0.75rem;
+            color: var(--text-primary);
+        }
+
+        .label {
+            color: var(--text-secondary);
+            font-size: 0.65rem;
+            text-transform: uppercase;
+            letter-spacing: 0.1em;
+        }
+
+        .export-btn {
+            position: fixed;
+            top: 10px;
+            right: 10px;
+            background: #fff;
+            color: #000;
+            padding: 6px 12px;
+            border-radius: 4px;
+            font-size: 10px;
+            font-weight: 700;
+            cursor: pointer;
+            z-index: 100;
+            border: none;
+        }
+
+        @media print {
+            .export-btn {
+                display: none;
+            }
+        }
+    </style>
+</head>
+
+<body>
+    <button class="export-btn" onclick="window.print()">Print Card</button>
+    <div class="card">
+        <div class="header">
+            <img src="logo.png" alt="Logo" class="logo">
+            <h1>Guidee AI Labs</h1>
+        </div>
+        <div class="tagline">AI voice assistants for healthcare</div>
+        <div class="contacts">
+            <div class="contact-item">
+                <span class="label">CFO | Suhail Sayed Muhammed</span>
+                <span>+91 8301909767</span>
+            </div>
+            <div class="contact-item">
+                <span class="label">CEO | Jeevan Kumar</span>
+                <span>+91 7994788157</span>
+            </div>
+            <div class="contact-item"
+                style="margin-top: 2px; border: none; padding: 0; font-size: 0.65rem; opacity: 0.6;">
+                bettercalljeevan@gmail.com
+            </div>
+        </div>
+    </div>
+</body>
+
+</html>

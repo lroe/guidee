@@ -1,0 +1,289 @@
+<!DOCTYPE html>
+<html lang="en">
+
+<head>
+    <meta charset="UTF-8">
+    <meta name="viewport" content="width=device-width, initial-scale=1.0">
+    <title>Guidee AI Labs | Hospital Pitch Deck</title>
+    <link rel="preconnect" href="https://fonts.googleapis.com">
+    <link rel="preconnect" href="https://fonts.gstatic.com" crossorigin>
+    <link href="https://fonts.googleapis.com/css2?family=Inter:wght@300;400;500;600;700&display=swap" rel="stylesheet">
+    <style>
+        :root {
+            --bg-primary: #000000;
+            --text-primary: #ffffff;
+            --text-secondary: rgba(255, 255, 255, 0.7);
+            --accent: #6366f1;
+            --slide-height: 100vh;
+        }
+
+        @page {
+            size: A4;
+            margin: 0;
+        }
+
+        * {
+            box-sizing: border-box;
+            margin: 0;
+            padding: 0;
+        }
+
+        body {
+            background-color: var(--bg-primary);
+            color: var(--text-primary);
+            font-family: 'Inter', sans-serif;
+            overflow-x: hidden;
+            scroll-snap-type: y mandatory;
+        }
+
+        .slide {
+            height: var(--slide-height);
+            width: 100vw;
+            display: flex;
+            flex-direction: column;
+            justify-content: center;
+            align-items: center;
+            padding: 80px;
+            scroll-snap-align: start;
+            position: relative;
+            overflow: hidden;
+            background: #000;
+        }
+
+        .content {
+            max-width: 1100px;
+            width: 100%;
+            z-index: 1;
+        }
+
+        h1 {
+            font-size: 4rem;
+            font-weight: 700;
+            line-height: 1;
+            margin-bottom: 0;
+            letter-spacing: -0.05em;
+        }
+
+        h2 {
+            font-size: 3.5rem;
+            font-weight: 600;
+            margin-top: 12px;
+            margin-bottom: 24px;
+            letter-spacing: -0.04em;
+            color: var(--text-primary);
+        }
+
+        p {
+            font-size: 1.5rem;
+            color: var(--text-secondary);
+            line-height: 1.4;
+            margin-bottom: 32px;
+            letter-spacing: -0.01em;
+        }
+
+        .highlight {
+            color: #fff;
+            font-weight: 600;
+        }
+
+        .feature-grid {
+            display: grid;
+            grid-template-columns: 1fr 1fr;
+            gap: 40px;
+            margin-top: 40px;
+        }
+
+        .feature-item {
+            background: rgba(255, 255, 255, 0.03);
+            padding: 40px;
+            border-radius: 0;
+            border-left: 1px solid rgba(255, 255, 255, 0.2);
+        }
+
+        .feature-item h3 {
+            font-size: 0.875rem;
+            text-transform: uppercase;
+            letter-spacing: 0.15em;
+            margin-bottom: 16px;
+            color: var(--text-secondary);
+        }
+
+        .feature-item p {
+            font-size: 1.25rem;
+            margin-bottom: 0;
+            color: var(--text-primary);
+        }
+
+        .whatsapp-quote {
+            background: rgba(37, 211, 102, 0.1);
+            padding: 40px;
+            border-radius: 24px;
+            border: 1px solid rgba(37, 211, 102, 0.3);
+            margin-top: 40px;
+        }
+
+        .whatsapp-quote p {
+            margin-bottom: 12px;
+            font-size: 1.5rem;
+        }
+
+        @media (max-width: 768px) {
+            h1 {
+                font-size: 3rem;
+            }
+
+            h2 {
+                font-size: 2.25rem;
+            }
+
+            p {
+                font-size: 1.25rem;
+            }
+
+            .slide {
+                padding: 40px 20px;
+            }
+
+            .feature-grid {
+                grid-template-columns: 1fr;
+            }
+        }
+
+        @media print {
+            body {
+                background: #000 !important;
+                -webkit-print-color-adjust: exact;
+                print-color-adjust: exact;
+            }
+
+            .slide {
+                height: 297mm;
+                width: 210mm;
+                page-break-after: always;
+                scroll-snap-align: none;
+                background: #000 !important;
+            }
+
+            .export-btn {
+                display: none !important;
+            }
+        }
+
+        .export-btn {
+            position: fixed;
+            top: 40px;
+            right: 40px;
+            background: #fff;
+            color: #000;
+            padding: 12px 24px;
+            border-radius: 99px;
+            font-weight: 600;
+            text-decoration: none;
+            z-index: 100;
+            font-size: 0.875rem;
+            cursor: pointer;
+            border: none;
+            transition: transform 0.2s ease;
+        }
+
+        .export-btn:hover {
+            transform: scale(1.05);
+        }
+
+        .malayalam-font {
+            font-family: 'Inter', sans-serif;
+            font-weight: 400;
+            opacity: 0.9;
+        }
+
+        .slide-logo {
+            width: 100px;
+            height: 100px;
+            filter: drop-shadow(0 0 30px rgba(255, 255, 255, 0.6));
+            margin-right: 20px;
+        }
+
+        .header-group {
+            display: flex;
+            align-items: center;
+            margin-bottom: 40px;
+        }
+
+        .nav-logo-small {
+            height: 48px;
+            width: auto;
+            margin-bottom: 16px;
+            filter: drop-shadow(0 0 15px rgba(255, 255, 255, 0.4));
+        }
+    </style>
+</head>
+
+<body>
+
+    <button class="export-btn" onclick="window.print()">Export as PDF</button>
+
+    <!-- Slide 1: The Human-Like AI -->
+    <section class="slide">
+        <div class="content">
+            <div class="header-group">
+                <img src="logo.png" alt="Guidee AI Logo" class="slide-logo">
+                <h1 style="color: var(--text-primary); font-size: 3rem;">Guidee AI Labs</h1>
+            </div>
+            <h2>The New Standard in Patient Care</h2>
+            <p>Voice AI that speaks <span class="highlight">Malayalam (മലയാളം), English, and beyond.</span></p>
+
+            <div class="feature-grid">
+                <div class="feature-item">
+                    <h3>Natural & Empathetic</h3>
+                    <p class="malayalam-font">"നമസ്കാരം! ഹോസ്പിറ്റൽ അപ്പോയിന്റ്മെന്റ് ബുക്കിംഗിലേക്ക് സ്വാഗതം.
+                        നിങ്ങൾക്ക് ഏത് ഡോക്ടറെയാണ് കാണേണ്ടത്?"</p>
+                    <p style="margin-top: 10px;">Not a robotic script. Our AI sounds human, friendly, and handles
+                        complex patient needs.</p>
+                </div>
+                <div class="feature-item">
+                    <h3>24/7 Global Access</h3>
+                    <p>Scalable, reliable, and always available in your patient's native tongue.</p>
+                </div>
+            </div>
+        </div>
+    </section>
+
+    <!-- Slide 2: Your Practice, Simplified -->
+    <section class="slide">
+        <div class="content">
+            <h2>Your Practice, <span style="color: var(--accent);">Simplified</span></h2>
+            <p>If you can use WhatsApp, you can manage Guidee.</p>
+
+            <div class="whatsapp-quote">
+                <p style="font-style: italic; color: #fff;">"I am not available tomorrow morning"</p>
+                <p style="color: #25D366; font-weight: 700; margin-bottom: 0;">AI: "Got it. Rescheduling all tomorrow
+                    morning slots now."</p>
+            </div>
+
+            <div class="feature-grid">
+                <div class="feature-item">
+                    <h3>Custom Tailored</h3>
+                    <p>We build the AI to follow <span class="highlight">your specific workflows</span> and speak any
+                        language you wish.</p>
+                </div>
+                <div class="feature-item">
+                    <h3>The Smartest Value</h3>
+                    <p>Your personal assistant at the <span class="highlight">cheapest monthly rate</span>. Zero
+                        training, infinite scale.</p>
+                </div>
+            </div>
+
+            <div style="text-align: center; margin-top: 60px;">
+                <img src="logo.png" alt="Guidee AI Logo" class="nav-logo-small">
+                <p style="font-weight: 600; color: #fff; margin-bottom: 8px;">CFO: Suhail Sayed Muhammed (+91
+                    8301909767)</p>
+                <p style="font-weight: 600; color: #fff; margin-bottom: 8px;">CEO: Jeevan Kumar (+91 7994788157)</p>
+                <p style="font-weight: 500; color: var(--text-secondary); margin-bottom: 0;">bettercalljeevan@gmail.com
+                </p>
+            </div>
+        </div>
+    </section>
+
+</body>
+
+</html>
