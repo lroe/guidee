@@ -2,85 +2,452 @@
 <html lang="en">
 <head>
     <meta charset="UTF-8">
-    <meta name="viewport" content="width=device-width, initial-scale=1.0">
-    <title>Guidee AI Labs | Complete Tech Solutions for Your Business</title>
+    <meta name="viewport" content="width=device-width, initial-scale=1.0, user-scalable=no">
+    <meta name="apple-mobile-web-app-capable" content="yes">
+    <meta name="mobile-web-app-capable" content="yes">
+    <title>Guidee AI Labs | Technology Solutions for Business</title>
+    <meta name="description"
+        content="We deliver custom software, AI automation, cloud solutions, mobile apps, and digital transformation services for businesses.">
+    <link rel="preconnect" href="https://fonts.googleapis.com">
+    <link rel="preconnect" href="https://fonts.gstatic.com" crossorigin>
+    <link href="https://fonts.googleapis.com/css2?family=Inter:wght@300;400;500;600;700&display=swap" rel="stylesheet">
+    <link rel="icon" type="image/png" href="logo.png">
     <style>
-        body { font-family: system-ui, -apple-system, sans-serif; margin: 0; padding: 0; line-height: 1.6; color: #333; }
-        .hero { background: linear-gradient(135deg, #0f172a, #1e40af); color: white; padding: 130px 20px; text-align: center; }
-        .section { padding: 80px 20px; max-width: 1200px; margin: auto; }
-        .features { display: grid; grid-template-columns: repeat(auto-fit, minmax(320px, 1fr)); gap: 30px; }
-        .card { border: 1px solid #e2e8f0; border-radius: 16px; padding: 32px; transition: all 0.3s; background: white; }
-        .card:hover { transform: translateY(-10px); box-shadow: 0 20px 40px rgba(0,0,0,0.1); }
-        .btn { background: #2563eb; color: white; padding: 16px 36px; border-radius: 9999px; text-decoration: none; font-weight: 600; font-size: 1.1rem; }
+        :root {
+            --bg-primary: #000000;
+            --text-primary: #ffffff;
+            --text-secondary: rgba(255, 255, 255, 0.6);
+            --text-muted: rgba(255, 255, 255, 0.4);
+            --border: rgba(255, 255, 255, 0.1);
+            --accent: #6366f1;
+        }
+        * {
+            box-sizing: border-box;
+            margin: 0;
+            padding: 0;
+        }
+        html {
+            scroll-behavior: smooth;
+        }
+        body {
+            background-color: var(--bg-primary);
+            font-family: 'Inter', -apple-system, BlinkMacSystemFont, sans-serif;
+            color: var(--text-primary);
+            -webkit-font-smoothing: antialiased;
+            overflow-x: hidden;
+        }
+        canvas {
+            position: fixed;
+            top: 0;
+            left: 0;
+            width: 100%;
+            height: 100%;
+            z-index: -1;
+            opacity: 0.35;
+        }
+        .dg,
+        .promo {
+            display: none !important;
+        }
+        /* Navigation */
+        .nav {
+            position: fixed;
+            top: 0;
+            left: 0;
+            right: 0;
+            z-index: 100;
+            padding: 20px 48px;
+            display: flex;
+            justify-content: space-between;
+            align-items: center;
+            background: rgba(0, 0, 0, 0.8);
+            backdrop-filter: blur(12px);
+        }
+        .logo {
+            display: flex;
+            align-items: center;
+            gap: 16px;
+            font-size: 1.5rem;
+            font-weight: 700;
+            letter-spacing: -0.02em;
+        }
+        .logo img {
+            height: 64px;
+            width: auto;
+            filter: drop-shadow(0 0 8px rgba(255, 255, 255, 0.4));
+            transition: filter 0.3s ease;
+        }
+        .logo:hover img {
+            filter: drop-shadow(0 0 12px rgba(255, 255, 255, 0.6));
+        }
+        .nav-links {
+            display: flex;
+            gap: 32px;
+            align-items: center;
+        }
+        .nav-link {
+            color: var(--text-secondary);
+            text-decoration: none;
+            font-size: 0.875rem;
+            transition: color 0.2s ease;
+        }
+        .nav-link:hover {
+            color: var(--text-primary);
+        }
+        /* Hero Section */
+        .hero {
+            min-height: 100vh;
+            display: flex;
+            flex-direction: column;
+            justify-content: center;
+            align-items: center;
+            text-align: center;
+            padding: 120px 24px 80px;
+        }
+        .hero-content {
+            display: flex;
+            align-items: center;
+            justify-content: center;
+            gap: 40px;
+            text-align: left;
+            margin-bottom: 24px;
+            animation: fadeUp 0.8s ease-out;
+        }
+        .hero h1 {
+            font-size: clamp(2.5rem, 7vw, 5rem);
+            font-weight: 600;
+            letter-spacing: -0.04em;
+            line-height: 1.05;
+            margin-bottom: 0;
+        }
+        .hero-logo {
+            width: 300px;
+            height: 300px;
+            flex-shrink: 0;
+            filter: drop-shadow(0 0 20px rgba(255, 255, 255, 0.3));
+            transition: filter 0.5s ease;
+        }
+        .hero-logo:hover {
+            filter: drop-shadow(0 0 35px rgba(255, 255, 255, 0.5));
+        }
+        .hero .tagline {
+            font-size: clamp(1rem, 2vw, 1.25rem);
+            color: var(--text-secondary);
+            max-width: 560px;
+            line-height: 1.6;
+            margin-bottom: 40px;
+            animation: fadeUp 0.8s ease-out 0.1s both;
+        }
+        .hero-cta {
+            display: inline-flex;
+            align-items: center;
+            gap: 8px;
+            text-decoration: none;
+            color: #000;
+            background: #fff;
+            font-size: 0.9375rem;
+            font-weight: 500;
+            padding: 14px 28px;
+            border-radius: 8px;
+            transition: all 0.25s ease;
+            animation: fadeUp 0.8s ease-out 0.2s both;
+        }
+        .hero-cta:hover {
+            transform: translateY(-2px);
+            box-shadow: 0 8px 30px rgba(255, 255, 255, 0.15);
+        }
+        /* Services Section */
+        .services {
+            padding: 100px 24px;
+            max-width: 1000px;
+            margin: 0 auto;
+        }
+        .section-title {
+            font-size: 0.75rem;
+            font-weight: 500;
+            text-transform: uppercase;
+            letter-spacing: 0.1em;
+            color: var(--accent);
+            margin-bottom: 16px;
+        }
+        .services h2 {
+            font-size: clamp(1.75rem, 4vw, 2.5rem);
+            font-weight: 600;
+            letter-spacing: -0.03em;
+            margin-bottom: 48px;
+        }
+        .service-cards {
+            display: grid;
+            grid-template-columns: repeat(auto-fit, minmax(280px, 1fr));
+            gap: 24px;
+        }
+        .service-card {
+            background: rgba(255, 255, 255, 0.03);
+            border: 1px solid var(--border);
+            border-radius: 12px;
+            padding: 32px;
+            transition: all 0.3s ease;
+        }
+        .service-card:hover {
+            background: rgba(255, 255, 255, 0.06);
+            border-color: rgba(255, 255, 255, 0.15);
+        }
+        .service-card h3 {
+            font-size: 1.125rem;
+            font-weight: 600;
+            margin-bottom: 12px;
+        }
+        .service-card p {
+            color: var(--text-secondary);
+            font-size: 0.9375rem;
+            line-height: 1.6;
+        }
+        /* Contact Section */
+        .contact {
+            padding: 100px 24px;
+            max-width: 600px;
+            margin: 0 auto;
+        }
+        .contact h2 {
+            font-size: clamp(1.75rem, 4vw, 2.5rem);
+            font-weight: 600;
+            letter-spacing: -0.03em;
+            margin-bottom: 16px;
+            text-align: center;
+        }
+        .contact>p {
+            color: var(--text-secondary);
+            text-align: center;
+            margin-bottom: 48px;
+        }
+        .contact-form {
+            display: flex;
+            flex-direction: column;
+            gap: 20px;
+        }
+        .form-group {
+            display: flex;
+            flex-direction: column;
+            gap: 8px;
+        }
+        .form-group label {
+            font-size: 0.875rem;
+            color: var(--text-secondary);
+        }
+        .form-group input,
+        .form-group textarea {
+            background: rgba(255, 255, 255, 0.03);
+            border: 1px solid var(--border);
+            border-radius: 8px;
+            padding: 14px 16px;
+            color: var(--text-primary);
+            font-family: inherit;
+            font-size: 1rem;
+            transition: border-color 0.2s ease;
+        }
+        .form-group input:focus,
+        .form-group textarea:focus {
+            outline: none;
+            border-color: var(--accent);
+        }
+        .form-group textarea {
+            min-height: 120px;
+            resize: vertical;
+        }
+        .submit-btn {
+            background: #fff;
+            color: #000;
+            border: none;
+            border-radius: 8px;
+            padding: 16px 32px;
+            font-size: 1rem;
+            font-weight: 500;
+            cursor: pointer;
+            transition: all 0.25s ease;
+            margin-top: 8px;
+        }
+        .submit-btn:hover {
+            transform: translateY(-2px);
+            box-shadow: 0 8px 30px rgba(255, 255, 255, 0.15);
+        }
+        .email-link-wrapper {
+            display: flex;
+            justify-content: center;
+            margin-top: 24px;
+        }
+        .email-btn {
+            display: inline-flex;
+            align-items: center;
+            gap: 12px;
+            text-decoration: none;
+            color: #000;
+            background: #fff;
+            font-size: 1.125rem;
+            font-weight: 500;
+            padding: 18px 36px;
+            border-radius: 12px;
+            transition: all 0.25s ease;
+        }
+        .email-btn:hover {
+            transform: translateY(-2px);
+            box-shadow: 0 8px 30px rgba(255, 255, 255, 0.2);
+        }
+        .email-btn svg {
+            opacity: 0.8;
+        }
+        /* Footer */
+        .footer {
+            padding: 40px 48px;
+            border-top: 1px solid var(--border);
+            display: flex;
+            justify-content: space-between;
+            align-items: center;
+            flex-wrap: wrap;
+            gap: 16px;
+        }
+        .footer-text {
+            color: var(--text-muted);
+            font-size: 0.8125rem;
+        }
+        .footer-link {
+            color: var(--text-muted);
+            text-decoration: none;
+            font-size: 0.8125rem;
+            transition: color 0.2s ease;
+        }
+        .footer-link:hover {
+            color: var(--text-secondary);
+        }
+        @keyframes fadeUp {
+            from {
+                opacity: 0;
+                transform: translateY(20px);
+            }
+            to {
+                opacity: 1;
+                transform: translateY(0);
+            }
+        }
+        @media (max-width: 768px) {
+            .nav {
+                padding: 16px 24px;
+            }
+            .nav-links {
+                display: none;
+            }
+            .hero-content {
+                flex-direction: column;
+                text-align: center;
+                gap: 20px;
+            }
+            .hero-logo {
+                width: 180px;
+                height: 180px;
+            }
+            .services,
+            .contact {
+                padding: 60px 24px;
+            }
+            .footer {
+                padding: 24px;
+                flex-direction: column;
+                text-align: center;
+            }
+        }
     </style>
 </head>
 <body>
+    <canvas></canvas>
+    <div class="promo"><span class="promo-close"></span></div>
+    <a id="apple_link" style="display:none;"></a>
+    <a id="google_link" style="display:none;"></a>
+
+    <!-- Navigation -->
+    <nav class="nav">
+        <div class="logo">
+            <img src="logo.png" alt="Guidee AI Labs">
+            Guidee AI Labs
+        </div>
+        <div class="nav-links">
+            <a href="#services" class="nav-link">Services</a>
+            <a href="#contact" class="nav-link">Contact</a>
+        </div>
+    </nav>
 
     <!-- Hero -->
     <section class="hero">
-        <h1 style="font-size: 3.4rem; margin: 0 0 24px 0;">Tech Solutions That Drive Your Business Forward</h1>
-        <p style="font-size: 1.45rem; max-width: 720px; margin: 0 auto 40px;">
-            From AI & Automation to Custom Software, Cloud, and Digital Transformation , we deliver complete technology solutions tailored for your company.
-        </p>
-        <a href="#contact" class="btn">Get a Free Consultation →</a>
-    </section>
-
-    <!-- Services -->
-    <section class="section" style="background: #f8fafc;">
-        <h2 style="text-align:center; font-size: 2.6rem; margin-bottom: 60px;">What We Deliver</h2>
-        <div class="features">
-
-            <div class="card">
-                <h3> AI & Intelligent Automation</h3>
-                <p>AI Agents, Chatbots, Predictive Analytics, Process Automation, Document Intelligence, and Voice AI.</p>
-            </div>
-
-            <div class="card">
-                <h3> Custom Software Development</h3>
-                <p>Web Applications, Mobile Apps (iOS & Android), CRM/ERP Systems, and Business Portals.</p>
-            </div>
-
-            <div class="card">
-                <h3>☁️ Cloud Solutions & DevOps</h3>
-                <p>AWS, Azure, Google Cloud migration, Infrastructure setup, CI/CD, and Cloud Cost Optimization.</p>
-            </div>
-
-            <div class="card">
-                <h3> Cybersecurity & Compliance</h3>
-                <p>Penetration Testing, Data Security, GDPR/CCPA Compliance, and 24/7 Monitoring.</p>
-            </div>
-
-            <div class="card">
-                <h3> Digital Transformation</h3>
-                <p>Modernizing legacy systems, Workflow Automation, Team Collaboration Tools, and Scalable Tech Architecture.</p>
-            </div>
-
-            <div class="card">
-                <h3> Data Analytics & BI</h3>
-                <p>Business Intelligence Dashboards, Data Warehousing, Reporting Systems, and Insights Platforms.</p>
-            </div>
-
+        <div class="hero-content">
+            <img src="logo.png" alt="Guidee AI Labs" class="hero-logo">
+            <h1>Technology Solutions<br>for Your Business</h1>
         </div>
-    </section>
-
-    <!-- Industries -->
-    <section class="section">
-        <h2 style="text-align:center; font-size: 2.5rem;">We Serve All Industries</h2>
-        <p style="text-align:center; font-size: 1.2rem;">
-            Healthcare • Real Estate • Manufacturing • Retail & E-commerce • Education • Logistics • Finance • Professional Services • Startups
-        </p>
-    </section>
-
-    <!-- CTA -->
-    <section class="section" style="background: #0f172a; color: white; text-align: center;">
-        <h2 style="font-size: 2.4rem;">Ready to Scale Your Business with Technology?</h2>
-        <p style="font-size: 1.3rem; max-width: 600px; margin: 20px auto;">
-            Let's discuss your requirements. We deliver end-to-end tech solutions that actually work.
-        </p>
-        <a href="mailto:bettercalljeevan@gmail.com" class="btn" style="background: white; color: #0f172a; display: inline-block; margin-top: 20px;">
-            Email Us: bettercalljeevan@gmail.com
+        <p class="tagline">We build custom software, intelligent automation, cloud systems, mobile applications, and complete digital solutions that help companies grow efficiently.</p>
+        <a href="#contact" class="hero-cta">
+            Get Started
+            <svg width="16" height="16" fill="none" stroke="currentColor" stroke-width="2">
+                <path d="M3 8h10M9 4l4 4-4 4" />
+            </svg>
         </a>
     </section>
 
+    <!-- Services -->
+    <section class="services" id="services">
+        <p class="section-title">What We Deliver</p>
+        <h2>End-to-End Technology Solutions</h2>
+        <div class="service-cards">
+            <div class="service-card">
+                <h3>Custom Software Development</h3>
+                <p>Web applications, business management systems, CRMs, ERPs and tailored platforms designed specifically for your operations.</p>
+            </div>
+            <div class="service-card">
+                <h3>Intelligent Automation</h3>
+                <p>Process automation, workflow systems, document processing, and smart agents that reduce manual work and increase efficiency.</p>
+            </div>
+            <div class="service-card">
+                <h3>Cloud & Infrastructure</h3>
+                <p>Cloud migration, scalable architecture, DevOps setup, and reliable hosting solutions across AWS, Azure and Google Cloud.</p>
+            </div>
+            <div class="service-card">
+                <h3>Mobile Applications</h3>
+                <p>High-performance iOS and Android apps that deliver excellent user experience and seamless business integration.</p>
+            </div>
+            <div class="service-card">
+                <h3>Data Analytics & Reporting</h3>
+                <p>Business intelligence dashboards, data insights, predictive modeling, and clear reporting systems.</p>
+            </div>
+            <div class="service-card">
+                <h3>Digital Transformation</h3>
+                <p>Modernization of legacy systems, system integration, and complete technology strategy for long-term growth.</p>
+            </div>
+        </div>
+    </section>
+
+    <!-- Contact -->
+    <section class="contact" id="contact">
+        <p class="section-title">Get in Touch</p>
+        <h2>Let's Build Together</h2>
+        <p>Drop us an email and we will get back to you within 24 hours.</p>
+        <div class="email-link-wrapper">
+            <a href="mailto:bettercalljeevan@gmail.com" class="email-btn">
+                <svg width="20" height="20" viewBox="0 0 24 24" fill="none" stroke="currentColor" stroke-width="2" stroke-linecap="round" stroke-linejoin="round">
+                    <path d="M4 4h16c1.1 0 2 .9 2 2v12c0 1.1-.9 2-2 2H4c-1.1 0-2-.9-2-2V6c0-1.1.9-2 2-2z"></path>
+                    <polyline points="22,6 12,13 2,6"></polyline>
+                </svg>
+                bettercalljeevan@gmail.com
+            </a>
+        </div>
+    </section>
+
+    <!-- Footer -->
+    <footer class="footer">
+        <div style="margin-bottom: 12px; opacity: 0.8; font-size: 0.9rem;">
+            <div style="margin-bottom: 4px;">CFO: Suhail Sayed Muhammed (+91 8301909767)</div>
+            <div>CEO: Jeevan Kumar (+91 7994788157)</div>
+        </div>
+        <span class="footer-text">© 2026 Guidee AI Labs</span>
+        <a href="mailto:bettercalljeevan@gmail.com" class="footer-link">bettercalljeevan@gmail.com</a>
+    </footer>
+
+    <script src="WebGL-Fluid-Simulation-master/dat.gui.min.js"></script>
+    <script src="WebGL-Fluid-Simulation-master/script.js"></script>
 </body>
 </html>
